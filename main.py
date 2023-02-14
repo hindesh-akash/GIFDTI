@@ -20,6 +20,8 @@ import torch.optim as optim
 import torch.nn.functional as F
 from sklearn.metrics import accuracy_score, roc_auc_score, precision_score, f1_score, recall_score,precision_recall_curve, auc
 
+print(torch.cuda.is_available())
+
 def load_pickle(file_name):
     with open(file_name, 'rb') as f:
         return pickle.load(f)
@@ -126,7 +128,7 @@ def shuffle_dataset(dataset, seed):
     np.random.shuffle(dataset)
     return dataset
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "1,2"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
 if __name__ == "__main__":
     """select seed"""
     SEED = 1234
